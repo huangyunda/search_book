@@ -1,0 +1,41 @@
+body {
+	font-family: "";
+}
+
+.site-navbar .navbar-nav {
+	float: right;
+}
+
+.navbar {
+	margin-bottom: 0px;
+	border-radius: 0px;
+}
+
+.navbar-inverse {
+	border-color: transparent;
+}
+
+.jumbotron {
+	text-align: center;
+	background-color: #222;
+	color: #9d9d9d;
+}
+
+.form-inline .form-control {
+	text-align: center;
+}
+
+.fengmian {
+	width: 100%;
+}
+
+.info {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border-top: 1px solid #eee;
+}
+
+.zuozhe {
+	font-size: 16px;
+	color: grey;
+}

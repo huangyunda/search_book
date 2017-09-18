@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+
+{% block title %}
+Search_book
+{% endblock title %}
+
+{% block css %}
+<link rel="stylesheet" href="../static/css/search.css">
+{% endblock css %}
+
+{% block content %}
+    <nav class="navbar navbar-inverse nav-fixed-top site-navbar">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse"
+                data-target="#navbar">
+                    <span class="sr-only">切换导航</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Search_book</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+                <ul class="nav navbar-nav">
+                    <li><a href="#">首页</a></li>
+                    <li><a href="#">关于</a></li>
+                    <li><a href="{% url 'signout' %}">退出登录</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="jumbotron">
+        <div class="container">
+        <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8 col-xs-12">
+                <h2>通过搜索作者名可以快速得到豆瓣上此作者的所有书籍，并按评分排序</h2>
+                <form class="form-inline" role="form" action="/download" method="post">
+                    {% csrf_token %}
+                    <input type="text" class="form-control" id="search" 
+                    placeholder="请输入作者名, 例如:东野圭吾" name="author"> 
+                    <button type="submit" class="btn btn-primary">搜索</button>
+                </form>
+            </div>
+            <div class="col-sm-2"></div>
+        </div>
+        </div>
+    </div>
+
+    <div id="recommend" v-if="seen">
+        <div class="container">
+            <h1>好书推荐</h1>
+            <div class="info">
+                <div class="row">
+                    <div class="col-xs-2">
+                        <img src="../static/images/baiyexing.jpg" class="fengmian" alt="白夜行">
+                    </div>
+                    <div class="col-xs-10">
+                        <h3>白夜行<span class="zuozhe">&nbsp;&nbsp;[日]东野圭吾</span></h3>
+                        <p>&nbsp;&nbsp;《白夜行》是东野圭吾迄今口碑最好的长篇杰作，具备经典名著的一切要素：<br>
+                            &nbsp;&nbsp;一宗离奇命案牵出跨度近20年步步惊心的故事：悲凉的爱情、吊诡的命运、令人发指的犯罪、复杂人性的对决与救赎……</p>
+                    </div>
+                </div>
+            </div>
+            <div class="info">
+                <div class="row">
+                    <div class="col-xs-2">
+                        <img src="../static/images/daomu.jpg" class="fengmian" alt="盗墓笔记">
+                    </div>
+                    <div class="col-xs-10">
+                        <h3>盗墓笔记<span class="zuozhe">&nbsp;&nbsp;南派三叔</span></h3>
+                        <p>&nbsp;&nbsp;五十年前，一群长沙土夫子（盗墓贼）挖到一部战国帛书，残篇中记载了一座奇特的战国古墓的位置，但那群土夫子在地下碰上了诡异事件，几乎全部身亡。<br>
+                            &nbsp;&nbsp;五十年后，其中一个土夫子的孙子在先人笔记中发现了这个秘密，他纠集了一批经验丰富的盗墓高手前去寻宝。但谁也没有想到，这个古墓中竟然有着这么多诡异的事物：七星疑棺、青眼狐尸、九头蛇柏……
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="info">
+                <div class="row">
+                    <div class="col-xs-2">
+                        <img src="../static/images/pingfan.jpg" class="fengmian" alt="平凡的世界">
+                    </div>
+                    <div class="col-xs-10">
+                        <h3>平凡的世界<span class="zuozhe">&nbsp;&nbsp;路遥</span></h3>
+                        <p>&nbsp;&nbsp;《平凡的世界》是一部现实主义小说，也是一部小说形式的家族史。作者浓缩了中国西北农村的历史变迁过程，
+                            在小说中全景式地表现了中国当代城乡的社会生活。在近十年的广阔背景下，通过复杂的矛盾纠葛，
+                            刻划社会各阶层众多普通人的形象。劳动与爱情，挫折与追求，痛苦与欢乐，日常生活与巨大社会冲突，
+                            纷繁地交织在一起，深刻地展示了普通人在大时代历史进程中所走过的艰难曲折的道路。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

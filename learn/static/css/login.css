@@ -1,0 +1,26 @@
+.bg {
+	background-image: url("https://www.greenback.com/assets/images/login-bg.438aba84897856fb149df44338a4ce4a.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: 50%;
+	background-color: grey;
+	height: 100%;
+	position: relative;
+}
+
+body, html {
+	height: 100%;
+}
+
+.form-landing {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: white;
+	border-radius: 5px;
+}
+
+.form-box {
+	padding: 45px 60px;
+}
