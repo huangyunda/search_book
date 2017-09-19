@@ -20,8 +20,8 @@ from learn import views as learn_views
 
 urlpatterns = [
     url(r'^search', learn_views.search, name='search'),
-    url(r'^download', learn_views.download, name='download'),
-    # url(r'^accounts/', include('users.urls')),
+    url(r'^update_book', learn_views.update_book, name='update_book'),
+    url(r'^show_result', learn_views.show_result, name='show_result'),
     url(r'^signup', learn_views.signup, name='signup'),
     url(r'^signin', learn_views.signin, name='signin'),
     url(r'^signout', learn_views.signout, name='signout'),

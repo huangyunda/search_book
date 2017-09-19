@@ -36,11 +36,12 @@ Search_book
             <div class="col-sm-2"></div>
             <div class="col-sm-8 col-xs-12">
                 <h2>通过搜索作者名可以快速得到豆瓣上此作者的所有书籍，并按评分排序</h2>
-                <form class="form-inline" role="form" action="/download" method="post">
+                <form class="form-inline" role="form" id="form1" method="post">
                     {% csrf_token %}
                     <input type="text" class="form-control" id="search" 
                     placeholder="请输入作者名, 例如:东野圭吾" name="author"> 
-                    <button type="submit" class="btn btn-primary">搜索</button>
+                    <button class="btn btn-primary" onclick="button_search()">搜索</button>
+                    <button class="btn btn-danger" onclick="button_update()">更新</button>
                 </form>
             </div>
             <div class="col-sm-2"></div>
@@ -48,7 +49,7 @@ Search_book
         </div>
     </div>
 
-    <div id="recommend" v-if="seen">
+    <div id="recommend">
         <div class="container">
             <h1>好书推荐</h1>
             <div class="info">
@@ -93,4 +94,19 @@ Search_book
             </div>
         </div>
     </div>
+    <script type="text/javascript">
+        // var done = {{ done }};
+        // if (done):
+        //     alert("更新完成!");
+        function button_search(){
+            var form2 = document.getElementById("form1");
+            form2.setAttribute("action", "{% url 'show_result' %}");
+            form2.submit();
+        }
+        function button_update(){
+            var form3 = document.getElementById("form1");
+            form3.setAttribute("action", "{% url 'update_book' %}");
+            form3.submit();
+        }
+    </script>
 {% endblock content %}

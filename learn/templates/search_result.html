@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,12 +12,48 @@
       <script src="http://apps.bdimg.com/libs/html5shiv/3.7/html5shiv.min.js"></script>
       <script src="http://apps.bdimg.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-</head>
-<body>
-   
     <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="https://cdn.bootcss.com/vue/2.4.2/vue.min.js"></script>
-    <script src="https://cdn.bootcss.com/vue/2.4.2/vue.min.js"></script> 
+    <!-- <script src="https://cdn.bootcss.com/vue/2.4.2/vue.min.js"></script> -->
+</head>
+
+<body onload="load()">
+    <table class="table" id="result">
+        <thead>
+            <tr>
+                <th>书名</th>
+                <th>相关信息</th>
+                <th>评分</th>
+                <th>豆瓣地址</th>
+            </tr>
+        </thead>
+    </table>
+    <script type="text/javascript">
+        function load() {
+            var books = {{ totallist|safe }};
+            var tb = document.getElementById("result");
+            var tbody = document.createElement("tbody");
+            tb.appendChild(tbody);
+            for (var i=0;i<books.length;i++){
+                var tr = document.createElement("tr");
+                tbody.appendChild(tr);
+                for (var j=0;j<books[i].length;j++){
+                    var td = document.createElement("td");
+                    if (j==3){
+                        var a = document.createElement("a");
+                        a.setAttribute("href", books[i][j])
+                        a.setAttribute("target", "_blank")
+                        a.innerHTML = "CLICK HERE"
+                        td.appendChild(a)
+                    }
+                    else{
+                        td.innerHTML = books[i][j];
+                    }
+                    tr.appendChild(td);
+                }
+            }
+        };
+    </script>
 </body>
+
 </html>
